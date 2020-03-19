@@ -13,19 +13,19 @@ import edu.bit.board.vo.BoardVO;
 public class BoardService {
 	
 	@Autowired
-	BoardMapper boardMapper; //¿¬¼Ó°èÃş °¡Á®¿È
+	BoardMapper boardMapper; //ì˜ì†ê³„ì¸µ ê°€ì ¸ì˜´
 	
-	//°Ô½ÃÆÇ List¸¦ À§ÇÑ Ãâ·ÂÇÏ´Â ·ÎÁ÷
-	//ListÀÇ ±â´ÉÀº ¾È¿¡ ºñÁö´Ï½º ·ÎÁ÷ÀÌ ÇÏ³ª¹Û¿¡ ¾øÀ½
+	//ê²Œì‹œíŒ Listë¥¼ ìœ„í•œ ì¶œë ¥í•˜ëŠ” ë¡œì§
+	//Listì˜ ê¸°ëŠ¥ì€ ì•ˆì— ë¹„ì§€ë‹ˆìŠ¤ ë¡œì§ì´ í•˜ë‚˜ë°–ì— ì—†ìŒ
 	public List<BoardVO> selectBoardList() {
 		return boardMapper.selectBoardList();
 	}
 	
-	//°Ô½ÃÆÇ¿¡¼­ ¸®ÇÃÀ» ¾²´Â ·ÎÁ÷
-	//Äõ¸®¹® 2°³ÀÓ.. ±×·¡¼­ ÇÔ¼ö µÎ°³ °¡Á®¿Í¾ß ÇÔ
+	//ê²Œì‹œíŒì—ì„œ ë¦¬í”Œì„ ì“°ëŠ” ë¡œì§
+	//ì¿¼ë¦¬ë¬¸ 2ê°œì„.. ê·¸ë˜ì„œ í•¨ìˆ˜ ë‘ê°œ ê°€ì ¸ì™€ì•¼ í•¨
 	public void writeReply(BoardVO boardVO) {
-		boardMapper.updateShape(boardVO); //step°ú indent
-		boardMapper.insertReply(boardVO); //±Û insert½ÃÅ°´Â °Í
+		boardMapper.updateShape(boardVO); //stepê³¼ indent
+		boardMapper.insertReply(boardVO); //ê¸€ insertì‹œí‚¤ëŠ” ê²ƒ
 	}
 
 	public void insertBoard(BoardVO boardVO) {
