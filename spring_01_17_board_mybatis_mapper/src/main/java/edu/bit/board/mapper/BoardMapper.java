@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Update;
 import edu.bit.board.page.Criteria;
 import edu.bit.board.vo.BoardVO;
 
-public interface BoardMapper { //¿¬¼Ó°èÃş, dao¿¡ µé¾î°¡´Â ÇÔ¼öµéÀ» ¿©±â ³Ö¾î¾ß ÇÔ.
+public interface BoardMapper { //ì˜ì†ê³„ì¸µ, daoì— ë“¤ì–´ê°€ëŠ” í•¨ìˆ˜ë“¤ì„ ì—¬ê¸° ë„£ì–´ì•¼ í•¨.
 	
 	@Select("select bId, bName, bTitle, bContent, bDate, bHit, bGroup, bStep, bIndent from mvc_board order by bGroup desc, bStep asc")
 	public List<BoardVO> selectBoardList();
@@ -22,7 +22,7 @@ public interface BoardMapper { //¿¬¼Ó°èÃş, dao¿¡ µé¾î°¡´Â ÇÔ¼öµéÀ» ¿©±â ³Ö¾î¾ß Ç
 	@Select("select * from mvc_board where bId = #{bId}")
 	public BoardVO selectBoardOne(String bId);
 	
-	//¿©±â¼­ ÀüÃ¼ °Ô½Ã±Û Ä«¿îÆÃÇÏ´Â Äõ¸®¹® ¹Ş¾Æ¿È
+	//ì—¬ê¸°ì„œ ì „ì²´ ê²Œì‹œê¸€ ì¹´ìš´íŒ…í•˜ëŠ” ì¿¼ë¦¬ë¬¸ ë°›ì•„ì˜´
 	@Select("select count(*) from mvc_board")
 	public int selectCountBoard();
 	
@@ -30,7 +30,7 @@ public interface BoardMapper { //¿¬¼Ó°èÃş, dao¿¡ µé¾î°¡´Â ÇÔ¼öµéÀ» ¿©±â ³Ö¾î¾ß Ç
 	public void updateBoard(@Param("boardVO") BoardVO boardVO);
 	
 	@Update("update mvc_board set bStep = bStep + 1 where bGroup = #{bGroup} and bStep > #{bStep}")
-	public void updateShape(BoardVO boardVO); //°´Ã¼ ÇÏ³ªÂ¥¸®´Â @Param ¾È Àû¾îÁàµµ µÊ.
+	public void updateShape(BoardVO boardVO); //ê°ì²´ í•˜ë‚˜ì§œë¦¬ëŠ” @Param ì•ˆ ì ì–´ì¤˜ë„ ë¨.
 	
 	@Insert("insert into mvc_board (bId, bName, bTitle, bContent, bGroup, bStep, bIndent) values (mvc_board_seq.nextval, #{bName}, #{bTitle},#{bContent}, #{bGroup}, #{bStep} +1, #{bIndent} +1)")
 	public void insertReply(BoardVO boardVO);
